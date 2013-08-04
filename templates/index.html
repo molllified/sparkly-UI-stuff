@@ -10,6 +10,7 @@
   
   <link rel=stylesheet href="{{ url_for('static', filename='css/foundation.css') }}">
   <link rel=stylesheet href="{{ url_for('static', filename='css/typeahead.css') }}">
+  <link rel=stylesheet href="{{ url_for('static', filename='css/example.css') }}">
   <script type="text/javascript" src="{{ url_for('static', filename='js/vendor/custom.modernizr.js') }}"></script>
   <script type="text/javascript" src="{{ url_for('static', filename='js/vendor/zepto.js') }}"></script>
   <script type="text/javascript" src="{{ url_for('static', filename='js/vendor/jquery.js') }}"></script>
@@ -34,7 +35,7 @@
               <!-- Title Area -->
               <li class="name">
                 <h1>
-                  <a href="#">
+                  <a href="/">
                     Does it Fit?
                   </a>
                 </h1>
@@ -42,7 +43,7 @@
               <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
             </ul>
             <div class="large-4 small-2 columns">
-              <input type="text" id="search_input" />
+              <input type="text" id="search_input" placeholder="Search" />
               <!-- <a href="#" class="postfix button expand">Search</a> -->
             </div>
 

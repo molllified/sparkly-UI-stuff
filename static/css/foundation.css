@@ -5,6 +5,8 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
+
+
 div#progress-display.progress.large-12{
   position:relative;
 }
@@ -4784,3 +4786,4 @@ a.th {
     max-width: 500px; }
   .f-dropdown.large {
     max-width: 800px; }
+

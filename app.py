@@ -114,7 +114,7 @@ app.jinja_env.filters['gravatar'] = gravatar_url
 
 
 
-@app.route('/main')
+@app.route('/')
 def main():
     print "main 123:", g.user
     return render_template('index.html')
