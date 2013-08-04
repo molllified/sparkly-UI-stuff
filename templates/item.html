@@ -9,17 +9,74 @@
   
   <link rel=stylesheet href="{{ url_for('static', filename='css/foundation.css') }}">
   <script type="text/javascript" src="{{ url_for('static', filename='js/vendor/custom.modernizr.js') }}"></script>
-
-  <!--
-  <script>
-  document.write('<script src=' +
-  ('__proto__' in {} ? 'js/vendor/zepto' : 'js/vendor/jquery') +
-  '.js><\/script>')
-  </script>
-  -->
-  <script type="text/javascript" src="{{ url_for('static', filename='js/vendor/zepto.js') }}"></script>
-  <script type="text/javascript" src="{{ url_for('static', filename='js/foundation.min.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/foundation.min.j') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/lists.js') }}"></script>
   <script type="text/javascript" src="{{ url_for('static', filename='js/foundation/foundation.reveal.js') }}"></script>
+
+  
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  <script>
+  $(function() {
+    var select = $( "#size" );
+    var slider = $( "<div id='slider'></div>" ).insertAfter( select ).slider({
+      min: 1,
+      max: 3,
+      range: "min",
+      value: 2,
+      slide: function( event, ui ) {
+        select[ 0 ].selectedIndex = ui.value - 1;
+      }
+    });
+    $( "#size" ).change(function() {
+      slider.slider( "value", this.selectedIndex + 1 );
+    });
+
+    var select = $( "#length" );
+    var slider = $( "<div id='slider'></div>" ).insertAfter( select ).slider({
+      min: 1,
+      max: 3,
+      range: "min",
+      value: 2,
+      slide: function( event, ui ) {
+        select[ 0 ].selectedIndex = ui.value - 1;
+      }
+    });
+    $( "#length" ).change(function() {
+      slider.slider( "value", this.selectedIndex + 1 );
+    });
+
+    var select = $( "#thick" );
+    var slider = $( "<div id='slider'></div>" ).insertAfter( select ).slider({
+      min: 1,
+      max: 3,
+      range: "min",
+      value: 2,
+      slide: function( event, ui ) {
+        select[ 0 ].selectedIndex = ui.value - 1;
+      }
+    });
+    $( "#thick" ).change(function() {
+      slider.slider( "value", this.selectedIndex + 1 );
+    });
+
+    var select = $( "#quality" );
+    var slider = $( "<div id='slider'></div>" ).insertAfter( select ).slider({
+      min: 1,
+      max: 3,
+      range: "min",
+      value: 2,
+      slide: function( event, ui ) {
+        select[ 0 ].selectedIndex = ui.value - 1;
+      }
+    });
+    $( "#quality" ).change(function() {
+      slider.slider( "value", this.selectedIndex + 1 );
+    });
+
+  });
+  </script>
 </head>
 <body>
 <div class="row">
@@ -74,7 +131,7 @@
  
  
       <!-- Header Content -->
-    <div class="row">
+		<div class="row">
  
           <div class="large-6 columns">
  
@@ -89,9 +146,45 @@
             <div class="panel">
               <h4 class="hide-for-small">{{ item_name }}<hr/></h4>
               <div class="item-info">
-                <p id="wideness">wide-fit-tight</p>
-                <p id="thickness">thick-medium-thin</p>
-                <p id="material">rough-ok-soft</p>
+                <div id="item-info">
+                  <label id="left">Feels Tight</label>
+                  <label id="center">Perfect</label>
+                  <label id="right">Fits Wide</label>
+                  <div class="progress large-12" id="progress-display">
+                    <span id="span-size"class="meter" style="width: 51%"></span>
+                    <span id="span-size2" class="meter" style="width:48%; background:#f2f2f2"></span>
+                  </div>
+                </div>
+
+                <div id="item-info">
+                  <label id="left">Short</label>
+                  <label id="center">Right</label>
+                  <label id="right">Long</label>
+                  <div class="progress large-12" id="progress-display">
+                    <span id="span-length"class="meter" style="width: 51%"></span>
+                    <span id="span-length2" class="meter" style="width:48%; background:#f2f2f2"></span>
+                  </div>
+                </div>
+
+                <div id="item-info">
+                  <label id="left">Thin</label>
+                  <label id="center">Medium</label>
+                  <label id="right">Thick</label>
+                  <div class="progress large-12" id="progress-display">
+                    <span id="span-thickness" class="meter" style="width:51%"></span>
+                    <span id="span-thickness2" class="meter" style="width:48%; background:#f2f2f2"></span>
+                  </div>
+                </div>
+
+                <div id="item-info">
+                  <label id="left">Cheap Quality</label>
+                  <label id="center">Ok</label>
+                  <label id="right">High Quality</label>
+                  <div class="progress large-12" id="progress-display">
+                    <span id="span-quality"class="meter" style="width:51%"></span>
+                    <span id="span-quality2" class="meter" style="width:48%; background:#f2f2f2"></span>
+                  </div>
+                </div>
               </div>
  
             </div>
@@ -102,27 +195,25 @@
 
       <!-- Header Content -->
 
-        <div class="row">
-          <div class="large-3 columns">
+        <div class="row" id="user-reviews">
+          <div class="large-12 columns">
             <h4>User Reviews</h4>
+            <hr/>
+            <ul id="ul1" class="user-reviews"></ul>
+            <a href="#" class="small rounded secondary button" data-reveal-id="myModal">Add a Review</a>
           </div>
-          <div class="small-3 columns">
-            <a href="#" class="tiny round button" data-reveal-id="myModal">Add Review</a>
-          </div>
-          <hr/>
-          <ul id="ul1" class="user-reviews">
-          </ul>
         </div>
 
       <!-- End Header Content -->
 
-        <ul class=messages>
+		<ul class=messages>
           {% for review in reviews %}
             <li>{{ review.text }}</li>
           {% else %}
             <li>There's no review so far.</li>
           {% endfor %}
         </ul>
+ 
  
       <!-- Footer -->
  
@@ -144,15 +235,82 @@
   </div>
 
   <!-- Modal for Adding reviews -->
-  <div id="myModal" class="reveal-modal medium">
-    <form action="{{ url_for('add_review') }}" method=post>
-      <p><input type=text name=text size=60>
-        <input class="small round button" type=submit value="Share"></p>
-    </form>
+  <div id="myModal" class="reveal-modal small">
+    <form>
+      <div class="row">
+        <div class="large-12 columns" id="myModalForm">
+          <div class="row">
+            <div class="modal-label-set">
+              <label for="size" id="left">Feels Tight</label>
+              <label for="size" id="center">Perfect</label>
+              <label for="size" id="right">Fits Wide</label>
+            </div>
+            <select name="size" id="size" class="slider">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+            </select>
+          </div>
+
+          <div class="row">
+          <label for="length" id="left">Short</label>
+          <label for="length" id="center">Right</label>
+          <label for="length" id="right">Long</label>
+          <select name="length" id="length" class="slider">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+          </select>
+          </div>
+
+          <div class="row">
+          <label for="thickness" id="left">Thin</label>
+          <label for="thickness" id="center">Medium</label>
+          <label for="thickness" id="right">Thick</label>
+          <select name="thick" id="thick" class="slider">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+          </select>
+          </div>
+
+          <div class="row">
+          <label for="quality" id="left">Cheap Quality</label>
+          <label for="quality" id="center">Ok</label>
+          <label for="quality" id="right">High Quality</label>
+          <select name="quality" id="quality" class="slider">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+          </select>
+          </div>
+
+          <div class="row" id="recommendation">
+            <label id="label">Would you recommend this item?</label>
+            <label for="radio1" id="radio-yes"><input name="radio1" type="radio" id="radio1"  CHECKED><span class="custom radio checked"></span> YES</label>
+            <label for="radio1" id="radio-no"><input name="radio1" type="radio" id="radio1"><span class="custom radio"></span> NO</label>
+          </div>
+
+          <div class="row" id="comments">
+            <label>Additional Comments</label>
+            <textarea></textarea>
+          </div>
+          
+          <div class="row">
+            <a href="#" class="small round button" >Submit Review</a>
+          </div>
+        </div>
+      </div>
+    </form> 
+    <a class="close-reveal-modal">&#215;</a>  
   </div>
   <!-- End Modal -->
 
-  
+  <script>
+  document.write('<script src=' +
+  ('__proto__' in {} ? 'js/vendor/zepto' : 'js/vendor/jquery') +
+  '.js><\/script>')
+  </script>
   
   <!--
   

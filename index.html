@@ -9,10 +9,17 @@
 
   
   <link rel=stylesheet href="{{ url_for('static', filename='css/foundation.css') }}">
+  <link rel=stylesheet href="{{ url_for('static', filename='css/typeahead.css') }}">
+  <script type="text/javascript" src="{{ url_for('static', filename='js/vendor/custom.modernizr.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/vendor/zepto.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/vendor/jquery.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/foundation.min.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/foundation/foundation.reveal.js') }}"></script>
+
+  <script type="text/javascript" src="{{ url_for('static', filename='js/typeahead.js/typeahead.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/typeahead.js/typeahead.min.js') }}"></script>
   
-
-  <script src="js/vendor/custom.modernizr.js"></script>
-
+    
 </head>
 <body>
 
@@ -37,27 +44,28 @@
               <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
             </ul>
             <div class="large-4 small-2 columns">
-              <input type="text" />
+              <input type="text" id="search_input" />
               <!-- <a href="#" class="postfix button expand">Search</a> -->
             </div>
 
-            <div class="small-2 columns">
-              <a href="#" class="postfix button expand">Search</a>
-            </div>
- 
             <section class="top-bar-section">
               <!-- Right Nav Section -->
               <ul class="right">
-                <li><a href="#">Main Item 1</a></li>
+                
                 <li class="divider"></li>
-                <li class="has-dropdown">
-                  <a href="#">Main Item 2</a>
-                  <ul class="dropdown">
-                    <li><a href="#">Dropdown Option</a></li>
-                    <li><a href="#">Dropdown Option</a></li>
-                    <li><a href="#">Dropdown Option</a></li>
-                  </ul>
-                </li>
+                {% if g.user %}
+                  <li class="has-dropdown">
+                    <a href="#">Welcome {{ g.user.name }}!</a>
+                    <ul class="dropdown">
+                      <li><a href="#">Dropdown Option</a></li>
+                      <li><a href="#">Dropdown Option</a></li>
+                      <li><a href="#">Dropdown Option</a></li>
+                    </ul>
+                  </li>
+                {% else %}
+                  <li><a href="#" data-reveal-id="signInModal">Sign In</a></li>
+                {% endif %}
+
               </ul>
             </section>
           </nav>
@@ -71,7 +79,7 @@
   <!-- Featured Item -->
         
         <div class="large-4 small-12 columns">
-          <a href="http://127.0.0.1:5000/item/1">
+          <a href="item/1">
             <img src="http://images.asos-media.com/inv/media/2/4/1/1/3131142/black/image1xxl.jpg">
           </a>
           
@@ -91,7 +99,7 @@
         <div class="large-8 columns">
           <div class="row">
             
-            <a href="http://127.0.0.1:5000/item/2"> 
+            <a href="item/2"> 
               <div class="large-4 small-6 columns">
                 <img src="http://images.asos-media.com/inv/media/8/3/9/7/3287938/berry/image1xl.jpg">
    
@@ -101,7 +109,7 @@
               </div>
             </a>
  
-            <a href="http://127.0.0.1:5000/item/3">
+            <a href="item/3">
               <div class="large-4 small-6 columns">
                 <img src="http://images.asos-media.com/inv/media/9/6/9/9/3269969/black/image1xl.jpg">
    
@@ -111,7 +119,7 @@
               </div>
             </a>
             
-            <a href="http://127.0.0.1:5000/item/4">
+            <a href="item/4">
               <div class="large-4 small-6 columns">
                 <img src="http://images.asos-media.com/inv/media/8/6/6/0/3020668/marsprint/image1xl.jpg">
    
@@ -121,7 +129,7 @@
               </div>
             </a>
 
-            <a href="http://127.0.0.1:5000/item/5"> 
+            <a href="item/5"> 
               <div class="large-4 small-6 columns">
                 <img src="http://images.asos-media.com/inv/media/4/5/8/7/3287854/creamblack/image1xl.jpg">
    
@@ -131,7 +139,7 @@
               </div>
             </a>
 
-            <a href="http://127.0.0.1:5000/item/6">
+            <a href="item/6">
               <div class="large-4 small-6 columns">
                 <img src="http://images.asos-media.com/inv/media/3/3/1/1/3221133/nude/image1xl.jpg">
    
@@ -141,7 +149,7 @@
               </div>
             </a>
  
-            <a href="http://127.0.0.1:5000/item/7">
+            <a href="item/7">
               <div class="large-4 small-6 columns">
                 <img src="http://images.asos-media.com/inv/media/5/0/9/5/3145905/black/image1xl.jpg">
    
@@ -177,13 +185,27 @@
     </div>
   </div>
 
-  <script>
-  document.write('<script src=' +
-  ('__proto__' in {} ? 'js/vendor/zepto' : 'js/vendor/jquery') +
-  '.js><\/script>')
-  </script>
-  
-  <script src="js/foundation.min.js"></script>
+  <!-- Modal for signing in -->
+  <div id="signInModal" class="reveal-modal small">
+    <form action="{{ url_for('signin') }}" method=post>
+
+      <!--
+      <dt>Username:
+      <dd><input type=text name=username size=30 value="{{ request.form.username }}">
+      <dt>Password:
+      <dd><input type=password name=password size=30>
+      -->
+
+      <input type="text" name=email placeholder="Email" value="{{ request.form.email }}">
+      <input type="password" name=password placeholder="Password">
+      <input class="small round button" type=submit value="Sign In">
+      <a href="signup" class="small round button" >Create New Profile</a>
+
+      {% if error %}<div class=error><strong>Error:</strong> {{ error }}</div>{% endif %}
+    </form>
+  </div>
+  <!-- End Modal -->
+
   <!--
   
   <script src="js/foundation/foundation.js"></script>
@@ -222,6 +244,12 @@
   
   <script>
     $(document).foundation();
+  </script>
+  <script>
+      $('#search_input').typeahead({
+        name: 'Search',
+        local: ['timtrueman', 'tamos', 'tomaaa', 'ttaa', 'tqq']
+      });
   </script>
 </body>
 </html>
