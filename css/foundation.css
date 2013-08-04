@@ -43,6 +43,13 @@
   margin-top: 60px;
 }
 
+.ui-slider-range.ui-widget-header.ui-corner-all.ui-slider-range-min {
+  border: none;
+  background: none;
+  color: #222222;
+  font-weight: bold;
+}
+
 html,
 body {
   font-size: 100%; }
