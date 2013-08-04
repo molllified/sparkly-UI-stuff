@@ -39,6 +39,10 @@
   margin-top: 20px;
 }
 
+.row #user-reviews {
+  margin-top: 60px;
+}
+
 html,
 body {
   font-size: 100%; }
