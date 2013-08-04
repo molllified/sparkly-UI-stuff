@@ -9,14 +9,16 @@
   
   <link rel=stylesheet href="{{ url_for('static', filename='css/foundation.css') }}">
   <script type="text/javascript" src="{{ url_for('static', filename='js/vendor/custom.modernizr.js') }}"></script>
-  <script type="text/javascript" src="{{ url_for('static', filename='js/foundation.min.j') }}"></script>
-  <script type="text/javascript" src="{{ url_for('static', filename='js/lists.js') }}"></script>
-  <script type="text/javascript" src="{{ url_for('static', filename='js/foundation/foundation.reveal.js') }}"></script>
-
+<!--
+  <script type="text/javascript" src="{{ url_for('static', filename='js/vendor/zepto.js') }}"></script>
+-->
   
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+  <script type="text/javascript" src="{{ url_for('static', filename='js/foundation.min.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/foundation/foundation.reveal.js') }}"></script>
   <script>
   $(function() {
     var select = $( "#size" );
@@ -306,12 +308,6 @@
   </div>
   <!-- End Modal -->
 
-  <script>
-  document.write('<script src=' +
-  ('__proto__' in {} ? 'js/vendor/zepto' : 'js/vendor/jquery') +
-  '.js><\/script>')
-  </script>
-  
   <!--
   
   <script src="js/foundation/foundation.js"></script>

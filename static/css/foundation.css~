@@ -3132,7 +3132,7 @@ label.error {
       height: 2em;
       padding: 0 10px;
       position: relative;
-      top: 0px; }
+      top: 8px; }
     .top-bar.expanded {
       background: #111111; }
 
