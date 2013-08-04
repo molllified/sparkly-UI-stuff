@@ -196,64 +196,71 @@
   <div id="myModal" class="reveal-modal small">
     <form>
       <div class="row">
-        <div class="modal-label-set">
-          <label for="size" id="left">Feels Tight</label>
-          <label for="size" id="center">Perfect</label>
-          <label for="size" id="right">Fits Wide</label>
-        </div>
-        <select name="size" id="size" class="slider">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-        </select>
-      </div>
-
-      <div class="row">
-      <label for="length" id="left">Short</label>
-      <label for="length" id="center">Right</label>
-      <label for="length" id="right">Long</label>
-      <select name="length" id="length" class="slider">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-      </select>
-      </div>
-
-      <div class="row">
-      <label for="thickness" id="left">Thin</label>
-      <label for="thickness" id="center">Medium</label>
-      <label for="thickness" id="right">Thick</label>
-      <select name="thick" id="thick" class="slider">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-      </select>
-      </div>
-
-      <div class="row">
-      <label for="quality" id="left">Cheap Quality</label>
-      <label for="quality" id="center">Ok</label>
-      <label for="quality" id="right">High Quality</label>
-      <select name="quality" id="quality" class="slider">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-      </select>
-      </div>
-
-
-      <div class="row">
         <div class="large-12 columns">
-          <label>Additional Comments</label>
-          <textarea placeholder="small-12.columns"></textarea>
+          <div class="row">
+            <div class="modal-label-set">
+              <label for="size" id="left">Feels Tight</label>
+              <label for="size" id="center">Perfect</label>
+              <label for="size" id="right">Fits Wide</label>
+            </div>
+            <select name="size" id="size" class="slider">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+            </select>
+          </div>
+
+          <div class="row">
+          <label for="length" id="left">Short</label>
+          <label for="length" id="center">Right</label>
+          <label for="length" id="right">Long</label>
+          <select name="length" id="length" class="slider">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+          </select>
+          </div>
+
+          <div class="row">
+          <label for="thickness" id="left">Thin</label>
+          <label for="thickness" id="center">Medium</label>
+          <label for="thickness" id="right">Thick</label>
+          <select name="thick" id="thick" class="slider">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+          </select>
+          </div>
+
+          <div class="row">
+          <label for="quality" id="left">Cheap Quality</label>
+          <label for="quality" id="center">Ok</label>
+          <label for="quality" id="right">High Quality</label>
+          <select name="quality" id="quality" class="slider">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+          </select>
+          </div>
+
+          <div class="row" id="recommendation">
+            <label id="label">Would you recommend this item?</label>
+            <label for="radio1" id="radio-yes"><input name="radio1" type="radio" id="radio1"  CHECKED><span class="custom radio checked"></span> YES</label>
+            <label for="radio1" id="radio-no"><input name="radio1" type="radio" id="radio1"><span class="custom radio"></span> NO</label>
+          </div>
+
+          <div class="row" id="comments">
+            <label>Additional Comments</label>
+            <textarea></textarea>
+          </div>
+          
+          <div class="row">
+            <a href="#" class="small round button" >Submit Review</a>
+          </div>
         </div>
       </div>
-      
-      <div class="row">
-        <a href="#" class="small round button" >Submit Review</a>
-        <a class="close-reveal-modal">&#215;</a>
-      </div>
-    </form>   
+    </form> 
+    <a class="close-reveal-modal">&#215;</a>  
   </div>
   <!-- End Modal -->
 

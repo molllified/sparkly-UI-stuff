@@ -50,6 +50,28 @@
   font-weight: bold;
 }
 
+#recommendation #radio-no {
+  display: inline;
+  float: right;
+  width: 45%;
+}
+
+#recommendation #radio-yes {
+  display: inline;
+  margin-left: 160px;
+}
+
+#recommendation #label {
+  text-align: center;
+}
+
+div#comments.row {
+  margin-bottom: 0px
+}
+
+div.large-12.columns {
+  margin-top:40px;
+}
 html,
 body {
   font-size: 100%; }
