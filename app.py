@@ -122,15 +122,70 @@ def main():
 
 @app.route('/item/<item_id>')
 def item(item_id=None):
+    print "item:", item_id
     session['item_id'] = item_id
     rv = query_db('''select * from item where item_id = ?''', [item_id], one=True)
     item_name = rv['item_name']
     item_picture_url = rv['item_picture_url']
 
-    reviews = query_db('''select * from review where item_id = ?''', [item_id])
-    print reviews
+    reviews = query_db('''
+        select review.text as text, user.name as user_name,
 
-    return render_template('item.html', item_id=item_id, item_name=item_name, item_picture_url=item_picture_url, reviews=reviews)
+        CASE WHEN review.size = 1 THEN 'Feels tight'
+        WHEN review.size = 2 THEN 'Perfect'
+        WHEN review.size = 3 THEN 'Fits wide'
+        END AS size_text,
+
+        CASE WHEN review.length = 1 THEN 'Short'
+        WHEN review.length = 2 THEN 'Right'
+        WHEN review.length = 3 THEN 'Long'
+        END AS length_text,
+
+        CASE WHEN review.thickness = 1 THEN 'Thin'
+        WHEN review.thickness = 2 THEN 'Medium'
+        WHEN review.thickness = 3 THEN 'Thick'
+        END AS thickness_text,
+
+        CASE WHEN review.quality = 1 THEN 'Cheap quality'
+        WHEN review.quality = 2 THEN 'Ok'
+        WHEN review.quality = 3 THEN 'High quality'
+        END AS quality_text,
+
+        CASE WHEN review.recommend = 1 THEN 'Do not recommend'
+        WHEN review.recommend = 2 THEN 'Highly recommend'
+        END AS recommend_text
+
+        from user
+        join
+        (select * from review where item_id = ?) review
+        on (user.user_id = review.user_id)''', [item_id])
+
+    
+    agg = query_db('''
+        select avg(size)/3.0*100 as size, avg(length)/3.0*100 as length,
+         avg(thickness)/3.0*100 as thickness, avg(quality)/3.0*100 as quality, avg(recommend)/3.0*100 as recommend
+        from review where item_id = ?
+        ''', [item_id])
+    print "==============agg:", agg
+    aggregator = {}
+    aggregator['size_low'], aggregator['size_high'] = get_slider_bounds(agg[0][0])
+    aggregator['length_low'], aggregator['length_high'] = get_slider_bounds(agg[0][1])
+    aggregator['thickness_low'], aggregator['thickness_high'] = get_slider_bounds(agg[0][2])
+    aggregator['quality_low'], aggregator['quality_high'] = get_slider_bounds(agg[0][3])
+    aggregator['recommend_low'], aggregator['recommend_high'] = get_slider_bounds(agg[0][4])
+    print "==============agg:", aggregator
+    return render_template('item.html', item_id=item_id, item_name=item_name, item_picture_url=item_picture_url, reviews=reviews, aggregator=aggregator)
+
+def get_slider_bounds(agg):
+    low = agg - 2
+    high = agg + 2
+    if low < 0:
+        low = 0
+    if high > 100:
+        high = 100
+    low_str = "width:" + str(low) + "%; background:#f2f2f2"
+    high_str = "width:" + str(high) + "%"
+    return (low_str, high_str)
 
 @app.route('/add_review', methods=['POST'])
 def add_review():
@@ -138,6 +193,8 @@ def add_review():
     if 'user_id' not in session:
         abort(401)
     if request.form['text']:
+        print "form: ", request.form
+
         db = get_db()
         db.execute('''insert into review (item_id, user_id, date, text, size, length, thickness, quality, recommend)
                     values (?, ?, ?, ?, ?, ?, ?, ?, ?)''', 
@@ -145,16 +202,18 @@ def add_review():
                     session['user_id'], 
                     int(time.time()),
                     request.form['text'],
-                    50,
-                    50,
-                    50,
-                    50,
-                    0]
+                    request.form['size'],
+                    request.form['length'],
+                    request.form['thickness'],
+                    request.form['quality'],
+                    request.form['recommend']
+                    ]
                     )
         print 'boing'
         print request.form['text']
         print 'done boing'
         db.commit()
+    print "*(*(* add_review done, fail"
     return redirect(url_for('item', item_id=session['item_id']))
 
 

@@ -13,7 +13,7 @@ create table user (
 );
 
 
---insert into user values(1, '', '', '', '', '', '', '', '', '');
+
 
 drop table if exists item;
 create table item (
@@ -49,6 +49,7 @@ create table review (
 
 
 
+insert into user values(1, 'a@gmail.com', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a');
 
 insert into item
   values (1, 'black jacket', 'http://google.com', 'http://images.asos-media.com/inv/media/2/4/1/1/3131142/black/image1xxl.jpg', 1);
@@ -66,11 +67,11 @@ insert into item
   values (7, 'black shirt', 'http://google.com', 'http://images.asos-media.com/inv/media/5/0/9/5/3145905/black/image1xl.jpg', 1);
 
 
-insert into review
-  values (1, 2, 1, 1, 'this berry dress is so cool!', 1, 1, 1, 1, 1);
-insert into review
-  values (2, 2, 1, 1, 'fits great!', 1, 1, 1, 1, 1);
-insert into review
-  values (3, 2, 2, 1, 'stylish!', 1, 1, 1, 1, 1);
-insert into review
-  values (4, 2, 3, 1, 'great!', 1, 1, 1, 1, 1);
+insert into review (item_id, user_id, date, text, size, length, thickness, quality, recommend)
+  values (2, 1, 1, 'this berry dress is so cool!', 1, 1, 1, 2, 1);
+insert into review (item_id, user_id, date, text, size, length, thickness, quality, recommend)
+  values (2, 1, 1, 'fits great!', 1, 2, 3, 3, 2);
+insert into review (item_id, user_id, date, text, size, length, thickness, quality, recommend)
+  values (2, 1, 1, 'stylish!', 1, 1, 1, 1, 1);
+insert into review (item_id, user_id, date, text, size, length, thickness, quality, recommend)
+  values (2, 1, 1, 'great!', 1, 1, 1, 1, 1);

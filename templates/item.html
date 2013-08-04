@@ -153,8 +153,13 @@
                   <label id="center">Perfect</label>
                   <label id="right">Fits Wide</label>
                   <div class="progress large-12" id="progress-display">
+                    {% if aggregator %}
+                      <span id="span-size"class="meter" style="{{ aggregator.size_high }}"></span>
+                    <span id="span-size2" class="meter" style="{{ aggregator.size_low }}"></span>
+                    {% else %}
                     <span id="span-size"class="meter" style="width: 51%"></span>
                     <span id="span-size2" class="meter" style="width:48%; background:#f2f2f2"></span>
+                    {% endif %}
                   </div>
                 </div>
 
@@ -163,8 +168,17 @@
                   <label id="center">Right</label>
                   <label id="right">Long</label>
                   <div class="progress large-12" id="progress-display">
-                    <span id="span-length"class="meter" style="width: 51%"></span>
+
+                    {% if aggregator %}
+                      <span id="span-length"class="meter" style="{{ aggregator.length_high }}"></span>
+                    <span id="span-length2" class="meter" style="{{ aggregator.length_low }}"></span>
+                    {% else %}
+                      <span id="span-length"class="meter" style="width: 51%"></span>
                     <span id="span-length2" class="meter" style="width:48%; background:#f2f2f2"></span>
+                    {% endif %}
+
+
+                    
                   </div>
                 </div>
 
@@ -173,8 +187,13 @@
                   <label id="center">Medium</label>
                   <label id="right">Thick</label>
                   <div class="progress large-12" id="progress-display">
+                    {% if aggregator %}
+                      <span id="span-thickness"class="meter" style="{{ aggregator.thickness_high }}"></span>
+                    <span id="span-thickness2" class="meter" style="{{ aggregator.thickness_low }}"></span>
+                    {% else %}
                     <span id="span-thickness" class="meter" style="width:51%"></span>
                     <span id="span-thickness2" class="meter" style="width:48%; background:#f2f2f2"></span>
+                    {% endif %}
                   </div>
                 </div>
 
@@ -183,8 +202,28 @@
                   <label id="center">Ok</label>
                   <label id="right">High Quality</label>
                   <div class="progress large-12" id="progress-display">
+                    {% if aggregator %}
+                      <span id="span-quality"class="meter" style="{{ aggregator.quality_high }}"></span>
+                    <span id="span-quality2" class="meter" style="{{ aggregator.quality_low }}"></span>
+                    {% else %}
                     <span id="span-quality"class="meter" style="width:51%"></span>
                     <span id="span-quality2" class="meter" style="width:48%; background:#f2f2f2"></span>
+                    {% endif %}
+                  </div>
+                </div>
+
+                <div id="item-info">
+                  <label id="left">Do not recommend</label>
+                  <label id="center"></label>
+                  <label id="right">Highly recommend</label>
+                  <div class="progress large-12" id="progress-display">
+                    {% if aggregator %}
+                      <span id="span-recommend"class="meter" style="{{ aggregator.recommend_high }}"></span>
+                    <span id="span-recommend" class="meter" style="{{ aggregator.recommend_low }}"></span>
+                    {% else %}
+                    <span id="span-recommend"class="meter" style="width:51%"></span>
+                    <span id="span-recommend" class="meter" style="width:48%; background:#f2f2f2"></span>
+                    {% endif %}
                   </div>
                 </div>
               </div>
@@ -208,9 +247,11 @@
 
       <!-- End Header Content -->
 
-		<ul class=messages>
+		    <ul class=messages>
           {% for review in reviews %}
-            <li>{{ review.text }}</li>
+            <li>{{ review.user_name }}</li>
+            <p>Size: {{ review.size_text }}, Length: {{ review.length_text}}, Thickness: {{ review.thickness_text }}, Recommend: {{ review.recommend_text }} </p>
+            <p>Additional Comments: {{ review.text }}</p>
           {% else %}
             <li>There's no review so far.</li>
           {% endfor %}
@@ -238,68 +279,51 @@
 
   <!-- Modal for Adding reviews -->
   <div id="myModal" class="reveal-modal small">
-    <form>
+    <form action="{{ url_for('add_review') }}" method=post>
       <div class="row">
         <div class="large-12 columns" id="myModalForm">
           <div class="row">
-            <div class="modal-label-set">
-              <label for="size" id="left">Feels Tight</label>
+              <label for="size1" id="left">Feels Tight</label>
               <label for="size" id="center">Perfect</label>
-              <label for="size" id="right">Fits Wide</label>
-            </div>
-            <select name="size" id="size" class="slider">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-            </select>
+              <label for="size11" id="right">Fits Wide</label>
+              <input type="range" id="size1" name="size" min="1" max="3">
           </div>
 
           <div class="row">
-          <label for="length" id="left">Short</label>
-          <label for="length" id="center">Right</label>
-          <label for="length" id="right">Long</label>
-          <select name="length" id="length" class="slider">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-          </select>
+            <label for="length1" id="left">Short</label>
+            <label for="length1" id="center">Right</label>
+            <label for="length1" id="right">Long</label>
+            <input type="range" id="length1" name="length" min="1" max="3">
           </div>
 
           <div class="row">
-          <label for="thickness" id="left">Thin</label>
-          <label for="thickness" id="center">Medium</label>
-          <label for="thickness" id="right">Thick</label>
-          <select name="thick" id="thick" class="slider">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-          </select>
+            <label for="thickness1" id="left">Thin</label>
+            <label for="thickness1" id="center">Medium</label>
+            <label for="thickness1" id="right">Thick</label>
+            <input type="range" id="thickness1" name="thickness" min="1" max="3">
           </div>
 
           <div class="row">
-          <label for="quality" id="left">Cheap Quality</label>
-          <label for="quality" id="center">Ok</label>
-          <label for="quality" id="right">High Quality</label>
-          <select name="quality" id="quality" class="slider">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-          </select>
+            <label for="quality1" id="left">Cheap Quality</label>
+            <label for="quality1" id="center">Ok</label>
+            <label for="quality1" id="right">High Quality</label>
+            <input type="range" id="quality1" name="quality" min="1" max="3">
           </div>
 
-          <div class="row" id="recommendation">
-            <label id="label">Would you recommend this item?</label>
-            <label for="radio1" id="radio-yes"><input name="radio1" type="radio" id="radio1"  CHECKED><span class="custom radio checked"></span> YES</label>
-            <label for="radio1" id="radio-no"><input name="radio1" type="radio" id="radio1"><span class="custom radio"></span> NO</label>
+          <div class="row">
+            <label for="recommend1" id="left">Don't recommend</label>
+            <label for="recommend1" id="center"></label>
+            <label for="recommend1" id="right">Highly recommend</label>
+            <input type="range" id="recommend1" name="recommend" min="1" max="2">
           </div>
 
           <div class="row" id="comments">
             <label>Additional Comments</label>
-            <textarea></textarea>
+            <textarea type=text name=text></textarea>
           </div>
           
           <div class="row">
-            <a href="#" class="small round button" >Submit Review</a>
+            <input class="small round button" type=submit value="Submit Review"></input>
           </div>
         </div>
       </div>
