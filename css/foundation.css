@@ -5,6 +5,105 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
+div#progress-display.progress.large-12{
+  position:relative;
+}
+
+span {
+  position:absolute;
+  top: 0;
+  left: 0;
+}
+div#item-info{
+  margin-bottom:20px;
+}
+#progress-display {
+  clear:both;
+}
+
+.panel #left {
+  float: left;
+  width:33.33333%;
+  text-align:left;
+}
+
+.panel #center {
+  float: left;
+  width:33.33333%;
+  text-align:center;
+}
+
+.panel #right {
+  float: left;
+  width:33.33333%;
+  text-align:right;
+}
+
+#myModal select {
+  display:none;
+}
+
+#myModal #left {
+  float: left;
+  width:33.33333%;
+  text-align:left;
+}
+
+#myModal #center {
+  float: left;
+  width:33.33333%;
+  text-align:center;
+}
+
+#myModal #right {
+  float: left;
+  width:33.33333%;
+  text-align:right;
+}
+
+#myModal .row {
+  margin-bottom: 40px;
+}
+
+#myModal .modal-label-set{
+  margin: auto;
+}
+
+#myModal #slider {
+  margin-top: 20px;
+}
+
+.row #user-reviews {
+  margin-top: 60px;
+}
+
+.ui-slider-range.ui-widget-header.ui-corner-all.ui-slider-range-min {
+  border: none;
+  background: none;
+  color: #222222;
+  font-weight: bold;
+}
+
+#recommendation #radio-no {
+  display: inline;
+  margin-left: 15px;
+}
+
+#recommendation #radio-yes {
+  display: inline;
+}
+
+#recommendation #label {
+  text-align: center;
+}
+
+div#recommendation.row {
+  text-align: center;
+}
+
+div#myModalForm.large-12.columns{
+  margin-top: 40px;
+}
 html,
 body {
   font-size: 100%; }
@@ -39,6 +138,13 @@ embed {
 
 img {
   -ms-interpolation-mode: bicubic; }
+
+.item-info progress {
+  background-color: #2ba6cb;  
+  border: 0;  
+  height: 18px;  
+  border-radius: 9px;  
+}
 
 #map_canvas img,
 #map_canvas embed,
@@ -1086,12 +1192,8 @@ h3 {
 h4 {
   font-size: 1.125em; }
 
-.review h4 {
-  display:run-in;
-}
-
-.review a {
-  display:block;
+#user-reviews h4{
+  float:left;
 }
 
 h5 {
