@@ -131,9 +131,7 @@
         <div class="row">
  
           <div class="large-6 columns">
- 
-            <img src="http://images.asos-media.com/inv/media/8/3/9/7/3287938/berry/image1xl.jpg"><br>
- 
+            <img src="http://images.asos-media.com/inv/media/8/3/9/7/3287938/berry/image1xl.jpg">
           </div>
  
  
@@ -143,14 +141,45 @@
             <div class="panel">
               <h4 class="hide-for-small">Item Info<hr/></h4>
               <div class="item-info">
-                <label id="wideness">wide-fit-tight</label>
-                <div class="progress large-6"><span class="meter" style="width: 40%"></span></div>
+                <div id="item-info">
+                  <label id="left">Feels Tight</label>
+                  <label id="center">Perfect</label>
+                  <label id="right">Fits Wide</label>
+                  <div class="progress large-12" id="progress-display">
+                    <span id="span-size"class="meter" style="width: 70%"></span>
+                    <span id="span-size2" class="meter" style="width:67%; background:#f2f2f2"></span>
+                  </div>
+                </div>
 
-                <label id="thickness">thick-medium-thin</label>
-                <div class="progress large-6"><span class="meter" style="width: 60%"></span></div>
+                <div id="item-info">
+                  <label id="left">Short</label>
+                  <label id="center">Right</label>
+                  <label id="right">Long</label>
+                  <div class="progress large-12" id="progress-display">
+                    <span id="span-length"class="meter" style="width: 40%"></span>
+                    <span id="span-length2" class="meter" style="width:37%; background:#f2f2f2"></span>
+                  </div>
+                </div>
 
-                <label id="material">rough-ok-soft</label>
-                <div class="progress large-6"><span class="meter" style="width: 80%"></span></div>
+                <div id="item-info">
+                  <label id="left">Thin</label>
+                  <label id="center">Medium</label>
+                  <label id="right">Thick</label>
+                  <div class="progress large-12" id="progress-display">
+                    <span id="span-thickness" class="meter" style="width: 60%"></span>
+                    <span id="span-thickness2" class="meter" style="width:57%; background:#f2f2f2"></span>
+                  </div>
+                </div>
+
+                <div id="item-info">
+                  <label id="left">Cheap Quality</label>
+                  <label id="center">Ok</label>
+                  <label id="right">High Quality</label>
+                  <div class="progress large-12" id="progress-display">
+                    <span id="span-quality"class="meter" style="width: 30%"></span>
+                    <span id="span-quality2" class="meter" style="width:27%; background:#f2f2f2"></span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -162,10 +191,10 @@
 
         <div class="row" id="user-reviews">
           <div class="large-12 columns">
-            <h4>User Reviews <a href="#" class="tiny round button" data-reveal-id="myModal">Add</a></h4>
+            <h4>User Reviews</h4>
             <hr/>
-            <ul id="ul1" class="user-reviews">
-            </ul>
+            <ul id="ul1" class="user-reviews"></ul>
+            <a href="#" class="small rounded secondary button" data-reveal-id="myModal">Add a Review</a>
           </div>
         </div>
 

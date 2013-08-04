@@ -5,6 +5,40 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
+div#progress-display.progress.large-12{
+  position:relative;
+}
+
+span {
+  position:absolute;
+  top: 0;
+  left: 0;
+}
+div#item-info{
+  margin-bottom:20px;
+}
+#progress-display {
+  clear:both;
+}
+
+.panel #left {
+  float: left;
+  width:33.33333%;
+  text-align:left;
+}
+
+.panel #center {
+  float: left;
+  width:33.33333%;
+  text-align:center;
+}
+
+.panel #right {
+  float: left;
+  width:33.33333%;
+  text-align:right;
+}
+
 #myModal select {
   display:none;
 }
