@@ -18,33 +18,52 @@
 <div class="row">
     <div class="large-12 columns">
  
-      <!-- Search Bar -->
+    <!-- Navigation -->
  
-        <div class="row">
+      <div class="row">
+        <div class="large-12 columns">
  
-          <div class="large-12 columns">
-            <div class="radius panel">
+          <nav class="top-bar">
+            <ul class="title-area">
+              <!-- Title Area -->
+              <li class="name">
+                <h1>
+                  <a href="#">
+                    Does it Fit?
+                  </a>
+                </h1>
+              </li>
+              <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
+            </ul>
+            <div class="large-4 small-2 columns">
+              <input type="text" />
+            </div>
+
+            <div class="small-2 columns">
+              <a href="#" class="postfix button expand">Search</a>
+            </div>
  
-            <form>
-              <div class="row collapse">
- 
-                <div class="large-10 small-8 columns">
-                  <input type="text" />
-                </div>
- 
-                <div class="large-2 small-3 columns">
-                  <a href="#" class="postfix button expand">Search</a>
-                </div>
- 
-              </div>
-            </form>
- 
-          </div>
-          </div>
- 
+            <section class="top-bar-section">
+              <!-- Right Nav Section -->
+              <ul class="right">
+                <li><a href="#">Main Item 1</a></li>
+                <li class="divider"></li>
+                <li class="has-dropdown">
+                  <a href="#">Main Item 2</a>
+                  <ul class="dropdown">
+                    <li><a href="#">Dropdown Option</a></li>
+                    <li><a href="#">Dropdown Option</a></li>
+                    <li><a href="#">Dropdown Option</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </section>
+          </nav>
+          <!-- End Top Bar -->
         </div>
+      </div>
  
-      <!-- End Search Bar -->
+    <!-- End Navigation -->
  
  
       <!-- Header Content -->
@@ -68,7 +87,6 @@
                 <label id="thickness">thick-medium-thin</p>
                 <label id="material">rough-ok-soft</p>
               </div>
- 
             </div>
           </div>
         </div>
@@ -78,11 +96,13 @@
       <!-- Header Content -->
 
         <div class="row">
-          <div class="review-header">
-            <h4 class="hide-for-small">User Reviews</h4>
-            <a href="#" class="tiny round button" data-reveal-id="myModal">Add Review</a>
-            <hr/>
+          <div class="large-3 columns">
+            <h4>User Reviews</h4>
           </div>
+          <div class="small-3 columns">
+            <a href="#" class="tiny round button" data-reveal-id="myModal">Add Review</a>
+          </div>
+          <hr/>
           <ul id="ul1" class="user-reviews">
           </ul>
         </div>

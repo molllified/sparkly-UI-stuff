@@ -1086,6 +1086,14 @@ h3 {
 h4 {
   font-size: 1.125em; }
 
+.review h4 {
+  display:run-in;
+}
+
+.review a {
+  display:block;
+}
+
 h5 {
   font-size: 1.125em; }
 
