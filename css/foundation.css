@@ -5,6 +5,40 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
+#myModal select {
+  display:none;
+}
+
+#myModal #left {
+  float: left;
+  width:33.33333%;
+  text-align:left;
+}
+
+#myModal #center {
+  float: left;
+  width:33.33333%;
+  text-align:center;
+}
+
+#myModal #right {
+  float: left;
+  width:33.33333%;
+  text-align:right;
+}
+
+#myModal .row {
+  margin-bottom: 40px;
+}
+
+#myModal .modal-label-set{
+  margin: auto;
+}
+
+#myModal #slider {
+  margin-top: 20px;
+}
+
 html,
 body {
   font-size: 100%; }
@@ -39,6 +73,13 @@ embed {
 
 img {
   -ms-interpolation-mode: bicubic; }
+
+.item-info progress {
+  background-color: #2ba6cb;  
+  border: 0;  
+  height: 18px;  
+  border-radius: 9px;  
+}
 
 #map_canvas img,
 #map_canvas embed,
