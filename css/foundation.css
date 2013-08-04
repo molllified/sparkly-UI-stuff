@@ -52,25 +52,23 @@
 
 #recommendation #radio-no {
   display: inline;
-  float: right;
-  width: 45%;
+  margin-left: 15px;
 }
 
 #recommendation #radio-yes {
   display: inline;
-  margin-left: 160px;
 }
 
 #recommendation #label {
   text-align: center;
 }
 
-div#comments.row {
-  margin-bottom: 0px
+div#recommendation.row {
+  text-align: center;
 }
 
-div.large-12.columns {
-  margin-top:40px;
+div#myModalForm.large-12.columns{
+  margin-top: 40px;
 }
 html,
 body {
