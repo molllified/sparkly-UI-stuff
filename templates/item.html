@@ -102,26 +102,28 @@
               <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
             </ul>
             <div class="large-4 small-2 columns">
-              <input type="text" />
+              <input type="text" id="search_input" />
+              <!-- <a href="#" class="postfix button expand">Search</a> -->
             </div>
 
-            <div class="small-2 columns">
-              <a href="#" class="postfix button expand">Search</a>
-            </div>
- 
             <section class="top-bar-section">
               <!-- Right Nav Section -->
               <ul class="right">
-                <li><a href="#">Main Item 1</a></li>
+                
                 <li class="divider"></li>
-                <li class="has-dropdown">
-                  <a href="#">Main Item 2</a>
-                  <ul class="dropdown">
-                    <li><a href="#">Dropdown Option</a></li>
-                    <li><a href="#">Dropdown Option</a></li>
-                    <li><a href="#">Dropdown Option</a></li>
-                  </ul>
-                </li>
+                {% if g.user %}
+                  <li class="has-dropdown">
+                    <a href="#">Welcome {{ g.user.name }}!</a>
+                    <ul class="dropdown">
+                      <li><a href="#">Dropdown Option</a></li>
+                      <li><a href="#">Dropdown Option</a></li>
+                      <li><a href="#">Dropdown Option</a></li>
+                    </ul>
+                  </li>
+                {% else %}
+                  <li><a href="#" data-reveal-id="signInModal">Sign In</a></li>
+                {% endif %}
+
               </ul>
             </section>
           </nav>
